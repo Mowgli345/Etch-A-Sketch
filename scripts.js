@@ -6,16 +6,6 @@ gridButton.addEventListener("click",changeGrid);
 
 drawGrid();
 
-
-function changeGrid () {
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-    }
-    col = prompt("How many squares?");
-    console.log(`ENTERED ${col}`)
-    drawGrid(col);
-    }
-
 function drawGrid(col) {
     const myRow = new DocumentFragment();
     if (col==null) {
@@ -37,28 +27,34 @@ function drawGrid(col) {
     colorGrid();
 }
 
+function changeGrid () {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    col = prompt("How many squares?");
+    drawGrid(col);
+    }
 
-//CHANGE COLOR BY JS
 
 function colorGrid() {
     const gridSquare = document.querySelectorAll(".grid-square");
     gridSquare.forEach((square)=> {
         square.addEventListener("mouseover", square =>{
-            square.target.backgroundColor="red";
-            console.log(square.target);
+            let colorSquare = square.target;
 
+            let myColor = window.getComputedStyle(colorSquare).backgroundColor;
+            colorSquare.style.backgroundColor=myColor; 
+            var rgb = myColor.match(/[0-9]+/);
+
+            if (rgb>50) {
+            myColor=`rgb(${rgb-40}, ${rgb-40}, ${rgb-40})`;
+            colorSquare.style.backgroundColor=myColor; 
+                }
+            else {
+                rgb=0;
+                myColor=`rgb(${rgb}, ${rgb}, ${rgb})`;
+                colorSquare.style.backgroundColor=myColor; 
+                } 
             });
         }); 
 }
-
-
-//CHANGES COLOUR BY CLASS
-
-// function colorGrid() {
-//     const gridSquare = document.querySelectorAll(".grid-square");
-//     gridSquare.forEach((square)=> {
-//         square.addEventListener("mouseover", square =>{
-//             square.target.classList.add("color");
-//             });
-//         }); 
-// }

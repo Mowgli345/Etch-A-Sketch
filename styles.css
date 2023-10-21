@@ -25,7 +25,7 @@ body {
     border: solid black 1px;
     border-bottom: 0;
     border-right:0;
-    background-color: lightgray;
+    background-color:rgb(255,255,255);
     display: inline-block;
     flex-grow: 1;
     border-collapse: collapse;
@@ -39,9 +39,9 @@ body {
     border-right: solid 1px black;
 }
 
-.color {
+/* .color {
     background-color: yellowgreen;
-}
+} */
 
 button {
     padding:.5rem 1rem;
